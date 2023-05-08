@@ -8,16 +8,29 @@ async function getWeather() {
 
 async function parseForecast(forecastJSON) {
   console.log(forecastJSON)
-  let forecast = {current: {}}
+  let weather = {current: {
+                    condition: forecastJSON.current.condition,
+                    feeslikeF: forecastJSON.current.feelslike_f,
+                    humidity: forecastJSON.current.humidity,
+                    precip: forecastJSON.current.precip,
+                    temp: forecastJSON.current.temp_f,
+                    windSpd: forecastJSON.current.wind_mph
+  }, forecast: []
+  }
 
-  forecast.current.condition = forecastJSON.current.condition
-  forecast.current.feelsLikeF = forecastJSON.current.feelslike_f
-  forecast.current.humidity = forecastJSON.current.humidity
-  forecast.current.precip = forecastJSON.current.precip
-  forecast.current.temp = forecastJSON.current.temp_f
-  forecast.current.windSpd = forecastJSON.current.wind_mph
+  forecastJSON.forecast.forecastday.forEach((day, i) => {
+    weather.forecast[i] = {}
 
-  console.log(forecast)
+    weather.forecast[i].date = day.date
+    weather.forecast[i].condition = day.condition
+    weather.forecast[i].feelikeF = day.feelslike_f
+    weather.forecast[i].humidity = day.humidity
+    weather.forecast[i].precip = day.precip
+    weather.forecast[i].temp = day.temp_f
+    weather.forecast[i].windSpd = day.wind_mph
+  })
+
+  console.log(weather)
 }
 
 getWeather()
