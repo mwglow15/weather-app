@@ -1,5 +1,5 @@
-async function getWeather() {
-  const forecastResponse = await fetch('https://api.weatherapi.com/v1/forecast.json?key=c68a6f05871548fc8c405836232904&q=Charlottesville&days=7', {mode:'cors'})
+async function getWeather(location) {
+  const forecastResponse = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=c68a6f05871548fc8c405836232904&q=${location}&days=7`, {mode:'cors'})
   const forecastJSON = await forecastResponse.json()
 
   console.log(forecastJSON.current.condition)
@@ -33,4 +33,13 @@ async function parseForecast(forecastJSON) {
   console.log(weather)
 }
 
-getWeather()
+const formSubmit = document.querySelector('#form-submit')
+formSubmit.addEventListener('click', (e) => {
+  e.preventDefault()
+
+  const location = document.querySelector('#location')
+
+  getWeather(location.value)
+})
+
+getWeather('Philadelphia')
