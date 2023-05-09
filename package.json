@@ -1,0 +1,22 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "Weather app built with HTML, CSS, JS using async functions",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwglow15/weather-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mwglow15/weather-app/issues"
+  },
+  "homepage": "https://github.com/mwglow15/weather-app#readme",
+  "dependencies": {
+    "date-fns": "^2.30.0"
+  }
+}
