@@ -4,6 +4,8 @@ async function getWeather(location) {
 
   const weather = await parseForecast(forecastJSON)
 
+  renderDisplay(weather)
+
   console.log(weather)
 }
 
@@ -12,9 +14,10 @@ async function parseForecast(forecastJSON) {
   let weather = {current: {
                     date: forecastJSON.current.last_updated,
                     condition: forecastJSON.current.condition,
-                    feeslikeF: forecastJSON.current.feelslike_f,
+                    feelslikeF: forecastJSON.current.feelslike_f,
                     humidity: forecastJSON.current.humidity,
-                    precip: forecastJSON.current.precip,
+                    cloud: forecastJSON.current.cloud,
+                    precip: forecastJSON.current.precip_in,
                     temp: forecastJSON.current.temp_f,
                     windSpd: forecastJSON.current.wind_mph,
                     windDir: forecastJSON.current.wind_dir
@@ -26,8 +29,9 @@ async function parseForecast(forecastJSON) {
 
     weather.forecast[i].date = day.date
     weather.forecast[i].condition = day.condition
-    weather.forecast[i].feelikeF = day.feelslike_f
+    weather.forecast[i].feelslikeF = day.feelslike_f
     weather.forecast[i].humidity = day.humidity
+    weather.forecast[i].cloud = day.cloud
     weather.forecast[i].precip = day.precip
     weather.forecast[i].temp = day.temp_f
     weather.forecast[i].windSpd = day.wind_mph
@@ -50,6 +54,31 @@ formSubmit.addEventListener('click', (e) => {
 
 getWeather('Philadelphia')
 
-async function renderDisplay() {
+async function renderDisplay(weather) {
+  console.log(weather.current)
+  setCurrentValues(weather.current)
+  weather.forecast.forEach((day) => {
+    setForecastValues(day)
+  })
+}
+
+async function setCurrentValues(weather) {
+  setValue('temp', weather.temp)
+  setValue('feels-like', weather.feelslikeF)
+  setValue('humidity', weather.humidity)
+  setValue('wind-spd', weather.windSpd)
+  setValue('precip', weather.precip)
+  setValue('cloud', weather.cloud)
+  setValue('wind-dir', weather.windDir)
+}
+
+async function setValue(dataAttribute, dataValue) {
+  const span = document.querySelector(`[data-${dataAttribute}]`)
+
+  console.log(span, dataValue)
+  span.textContent = dataValue
+}
+
+function setForecastValues() {
 
 }

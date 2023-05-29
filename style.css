@@ -5,8 +5,16 @@
   border: 1px solid black;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: helvetica, sans-serif;
+}
+
 header {
   height: 100px;
+  width: 100vw;
   padding: 15px 50px;
   display: flex;
   justify-content: space-between;
@@ -21,4 +29,33 @@ header {
 .current-weather {
   display: flex;
   
+}
+
+.main {
+
+}
+
+.main-data {
+  display: flex;
+
+}
+
+.main-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-data {
+  padding: 5px;
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+.datum {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
