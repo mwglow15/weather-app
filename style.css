@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 body {
@@ -22,21 +22,38 @@ header {
   background-color: #6cd3f6;
 }
 
+button, input {
+  padding: 5px;
+  font-size: 1.25rem;
+  border-radius: 5px;
+}
+
 .title {
   font-size: 3rem;
 }
 
 .current-weather {
   display: flex;
-  
+  border-bottom: 2px solid black;
 }
 
 .main {
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 15px;
+  width: 66vw;
+  justify-content: ;
 }
 
 .main-data {
   display: flex;
+  border-right: 2px solid black;
+  margin: 10px;
+  padding: 10px
+}
+
+.main-left {
 
 }
 
@@ -58,4 +75,31 @@ header {
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+.datum-title {
+  display: flex;
+  justify-content: center;
+  font-size: .8rem;
+  color: rgb(97, 97, 97);
+}
+
+.datum-value {
+
+}
+
+.forecast-card {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.forecast .datum {
+  width: 75px;
+  align-items: center;
+  justify-content: center;
+}
+
+.forecast-card:nth-child(even) {
+  background: lightgray;
 }
